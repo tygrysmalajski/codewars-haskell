@@ -11,6 +11,14 @@ spec = do
             dnaStrand [A,T,G,C] `shouldBe` [T,A,C,G]
             dnaStrand [G,T,A,T] `shouldBe` [C,A,T,A]
             dnaStrand [A,A,A,A] `shouldBe` [T,T,T,T]
-    
+          
         it "should not change the length" $ property $ \xs ->
             dnaStrand xs `shouldSatisfy` (length xs ==) . length
+        
+        it "should work for random DNA strands" $ property $ \xs ->
+            dnaStrand xs `shouldBe` map inverse xs
+            where 
+                inverse A = T
+                inverse T = A
+                inverse G = C
+                inverse C = G
