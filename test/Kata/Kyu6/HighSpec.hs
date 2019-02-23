@@ -20,8 +20,6 @@ spec = do
             high "take two bintang and a dance please" `shouldBe` "bintang"
         it "Empty test" $ do
             high "" `shouldBe` ""  
-        it "25 random tests" $ do
-            ranTest 0
 
 --local solution for random tests
 highL :: String -> String
@@ -32,16 +30,3 @@ highL myS = splitS!!(maxInd!!0)
                 maxInd = elemIndices (maximum valL) valL
 aToO :: Char -> Int
 aToO x  = (-96) + fromEnum x
--- random Test
-ranTest :: Int -> IO()
-ranTest n = 
-    if n < 25 then do
-        gen <- newStdGen
-        p <- randomRIO (0,250)
-        q <- randomRIO ('a','z')
-        let strRnd = foldl (++) " "  (map (++ " ") (splitOn [q] (take p (randomRs('a','z') gen))))
-        highL strRnd `shouldBe` high strRnd
-        print ("Tested Random Value: " ++ strRnd)
-        ranTest (n+1)
-    else
-        return ()
