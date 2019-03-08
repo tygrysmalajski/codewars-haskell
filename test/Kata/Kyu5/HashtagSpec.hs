@@ -4,7 +4,6 @@ import Test.Hspec
 import Test.QuickCheck
 import Data.Char (toUpper)
 
-
 spec :: Spec
 spec = do
     describe "generateHashtag" $ do
