@@ -11,9 +11,9 @@ validBraces = process []
         process [] (x:xs)
             | open x = process (x:[]) xs
             | otherwise = False
-        process (c:opened) (x:xs)
-            | open x = process (x:c:opened) xs
-            | x `closes` c = process opened xs
+        process opened@(c:cs) (x:xs)
+            | open x = process (x:opened) xs
+            | x `closes` c = process cs xs
             | otherwise = False
 
 open :: Char -> Bool           
