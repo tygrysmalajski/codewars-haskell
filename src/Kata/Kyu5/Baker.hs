@@ -1,3 +1,5 @@
+-- https://www.codewars.com/kata/pete-the-baker
+
 module Kata.Kyu5.Baker where
 
 type Ingredient = String
