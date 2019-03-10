@@ -50,3 +50,4 @@ tests:
     - QuickCheck
     - random
     - split
+    - HUnit
