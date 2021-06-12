@@ -8,4 +8,4 @@ narcissistic :: Integer -> Bool
 narcissistic n = (sum . map (^pow) $ digits) == n
     where
         pow = length digits
-        digits = unfoldr (\x -> if x > 0 then Just((x `mod` 10), x `div` 10) else Nothing) n
+        digits = unfoldr (\x -> if x > 0 then Just(x `mod` 10, x `div` 10) else Nothing) n

@@ -2,7 +2,7 @@
 
 module Kata.Kyu5.PickPeak where
 
-data PickedPeaks = PickedPeaks { pos :: [Int], peaks :: [Int] } 
+data PickedPeaks = PickedPeaks { pos :: [Int], peaks :: [Int] }
     deriving (Eq, Show)
 
 pickPeaks :: [Int] -> PickedPeaks
@@ -12,7 +12,7 @@ pickPeaks xs = PickedPeaks {pos=pick fst, peaks=pick snd}
         pick f = reverse . f $ result
         xlen = length xs
         result = fst $ foldl process
-            (([], []), (1, xs !! 0, xs !! 1, False)) 
+            (([], []), (1, head xs, xs !! 1, False))
             (drop 2 xs)
             where
                 process (state, (i, x1, x, isPlateau)) x2
@@ -22,7 +22,7 @@ pickPeaks xs = PickedPeaks {pos=pick fst, peaks=pick snd}
                         = plateau . includingX $ state
                     | isPlateau && (x < x2 || (x == x2 && end))
                         = noPlateau . excludingLast $ state
-                    | otherwise 
+                    | otherwise
                         = continue asIs state
                     where
                         includingX (positions, peaks) = (i:positions, x:peaks)

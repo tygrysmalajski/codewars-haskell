@@ -29,7 +29,7 @@ incProgress task User { rank = r, progress = p }
                     d = a * abs(r-task)
                     a = toInt $ compare r task
                     toInt x = case x of GT -> -1; EQ -> 0; LT -> 1
-            invalid x = notElem x ranks
+            invalid x = x `notElem` ranks
 
 ranks :: [Int]
-ranks = ([-8..8] \\ [0])
+ranks = [-8..8] \\ [0]
